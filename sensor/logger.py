@@ -8,7 +8,7 @@ LOG_FILE_NAME = f"{datetime.now().strftime('%m%d%Y__%H%M%S')}.log"
 
 LOG_FILE_DIR = os.path.join(os.getcwd(), 'logs')
 
-# create folder if not already exists
+# create 'log' folder; if not already exists
 os.makedirs(LOG_FILE_DIR, exist_ok=True)
 
 # log file path

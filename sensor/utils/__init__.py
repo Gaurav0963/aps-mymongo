@@ -5,6 +5,15 @@ from sensor.exception import SensorException
 import os, sys
 
 def get_collection_as_dataframe(db_name:str, collection_name:str)->pd.DataFrame:
+
+    '''
+    Description : This function returns collection as pandas DataFrame.
+    ------------------------------------------------------------------
+    PARAMETERS:
+    db_name = Database name
+    collection_name = Collection name
+    '''
+
     try:
         logging.info(f"Reading data from database : {db_name} and Collection: {collection_name}")
         df = pd.DataFrame(list(mongo_client[db_name][collection_name].find()))

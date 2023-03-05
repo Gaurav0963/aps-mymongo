@@ -1,0 +1,8 @@
+[2023-03-05 12:52:36,188] 9 root - INFO - Reading data from database : {db_name} and Collection: {collection_name}
+[2023-03-05 12:52:52,418] 11 root - INFO - Found colums: Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[2023-03-05 12:52:54,088] 14 root - INFO - Row and columns in df: (36188, 171)

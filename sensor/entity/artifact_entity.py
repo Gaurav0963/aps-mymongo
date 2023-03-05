@@ -1,11 +1,13 @@
-import os, sys
-from sensor import utils
-from sensor.exception import SensorException
-from sensor.logger import logging
-from sensor.entity import config_entity
+from dataclasses import dataclass
 
 
-class DataIngestionArtifact:...
+@dataclass
+class DataIngestionArtifact:
+    feature_store_file_path:str
+    train_file_path:str
+    test_file_path:str
+
+
 class DataValidationArtifact:...
 class DataTransformationArtifact:...
 class ModelTrainingArtifact:...

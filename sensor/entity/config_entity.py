@@ -1,4 +1,5 @@
 # Configuation or config in short means input.
+print("in config_entity")
 import os,sys
 from sensor.exception import SensorException
 from sensor.logger import logging
@@ -22,16 +23,17 @@ class DataIngestionConfig:
             self.db_name = "aps"
             self.collection_name = "sensor"
             self.data_ingestion_dir = os.path.join(training_pipeline_config.artifact_dir, "data_ingestion")
-            self.feature_store_dir = os.path.join(self.data_ingestion_dir, "feature_store", FILE_NAME)
+            self.feature_store_file_path = os.path.join(self.data_ingestion_dir,"feature_store",FILE_NAME)
             self.train_file_path = os.path.join(self.data_ingestion_dir, "dataset", TRAIN_FILE_NAME)
             self.test_file_path = os.path.join(self.data_ingestion_dir, "dataset", TEST_FILE_NAME)
-            self.test_size = 0.2
+            self.test_size = 0.2 #used in data_ingestion.py file inside components folder
+            print("ran DataIngestionClass")
 
     except Exception as e:
         raise SensorException(e, sys)
 
 
-    def to_dict(self)->dict:
+    def to_dict(self,)->dict:
         try:
             return self.__dict__
         except Exception as e:

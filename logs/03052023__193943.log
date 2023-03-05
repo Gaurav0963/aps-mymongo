@@ -1,0 +1,13 @@
+[2023-03-05 19:39:47,019] 14 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[2023-03-05 19:39:47,019] 24 root - INFO - Exporting collection data as pandas dataframe
+[2023-03-05 19:39:47,020] 18 root - INFO - Reading data from database : aps and Collection: sensor
+[2023-03-05 19:40:05,706] 20 root - INFO - Found colums: Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[2023-03-05 19:40:05,712] 22 root - INFO - dropping column: _id
+[2023-03-05 19:40:07,886] 24 root - INFO - Row and columns in df: (36188, 171)
+[2023-03-05 19:40:07,887] 30 root - INFO - Replacing 'na' values with np.NaN
+[2023-03-05 19:40:10,478] 35 root - INFO - Create feature store folder if not available

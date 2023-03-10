@@ -12,7 +12,7 @@ TEST_FILE_NAME = "test.csv"
 class TrainingPipelineConfig:
     def __init__(self):
         try:
-            self.artifact_dir = os.path.join(os.getcwd(), "artfact",f"{datetime.now().strftime('%m%d%Y__%H%M%S')}")
+            self.artifact_dir = os.path.join(os.getcwd(), "artifact",f"{datetime.now().strftime('%m%d%Y__%H%M%S')}")
         except Exception as e:
             raise SensorException(e, sys)
 

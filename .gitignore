@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 artfact
+artifact
 aps_failure_training_set1.csv
 # C extensions
 *.so

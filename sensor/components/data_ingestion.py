@@ -36,18 +36,19 @@ class DataIngestion:
             feature_store_dir = os.path.dirname(self.data_ingestion_config.feature_store_file_path)
             os.makedirs(feature_store_dir, exist_ok=True)
 
-            logging.info("Save df to feature store folder")
+            logging.info(f"Save df to 'feature_store' folder in atrifact")
             df.to_csv(path_or_buf=self.data_ingestion_config.feature_store_file_path, index=False, header=True)
 
-            logging.info("split dataset into train and test set")   
+            logging.info("Splitting dataset into TRAIN and TEST sets")   
             train_df, test_df = train_test_split(df, test_size=self.data_ingestion_config.test_size, random_state=42)
 
-            logging.info("create dataset directory folder if not available")
+            logging.info("Create 'dataset' directory folder if not available")
             dataset_dir = os.path.dirname(self.data_ingestion_config.train_file_path)
             os.makedirs(dataset_dir, exist_ok=True)
 
-            logging.info("Save df to feature store folder")
+            logging.info("Save train_df to 'dataset' folder in artifact")
             train_df.to_csv(path_or_buf=self.data_ingestion_config.train_file_path,index=False,header=True)
+            logging.info("Save test_df to 'dataset' folder in artifact")
             test_df.to_csv(path_or_buf=self.data_ingestion_config.test_file_path,index=False,header=True)
             
             # Preparing artifact i.e., Output

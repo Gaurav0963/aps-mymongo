@@ -4,6 +4,7 @@ from sensor.exception import SensorException
 from sensor.logger import logging
 from datetime import datetime
 
+
 FILE_NAME = "sensor.csv"
 TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME = "test.csv"
@@ -65,6 +66,28 @@ class DataTransformationConfig:
     except Exception as e:
         raise SensorException(e, sys)
 
-class ModelTrainingConfig:...
-class ModelEvaluationConfig:...
-class ModelPusherConfig:...
+
+class ModelTrainingConfig:
+    try:
+        def __init__(self, training_pipeline_config:TrainingPipelineConfig):
+            self.model_trainer_dir = os.path.join(training_pipeline_config.artifact_dir , "model_trainer")
+            self.model_path = os.path.join(self.model_trainer_dir,"model", MODEL_FILE_NAME)
+            self.expected_f1_score = 0.7
+            self.overfitting_threshold = 0.1
+    except Exception as e:
+        raise SensorException(e, sys)
+
+
+class ModelEvaluationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.change_threshold = 0.01
+
+
+class ModelPusherConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.model_pusher_dir = os.path.join(training_pipeline_config.artifact_dir , "model_pusher")
+        self.saved_model_dir = os.path.join("saved_models")
+        self.pusher_model_dir = os.path.join(self.model_pusher_dir,"saved_models")
+        self.pusher_model_path = os.path.join(self.pusher_model_dir,MODEL_FILE_NAME)
+        self.pusher_transformer_path = os.path.join(self.pusher_model_dir,TRANSFORMER_OBJECT_FILE_NAME)
+        self.pusher_target_encoder_path = os.path.join(self.pusher_model_dir,TARGET_ENCODER_OBJECT_FILE_NAME)

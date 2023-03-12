@@ -1,20 +1,20 @@
+import sys, os
 from sensor.entity import artifact_entity, config_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
 from sensor import utils
-import sys, os
 import pandas as pd
 import numpy as np
 from typing import Optional
-from sklearn.pipeline import LabelEncoder
-from sklearn.preprocessing import Pipeline, RobustScaler
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import RobustScaler, LabelEncoder
 from imblearn.combine import SMOTETomek
 from sklearn.impute import SimpleImputer
 from sensor.config import TARGET_COLUMN
 
 
 class DataTransformation:
-
+    print("in DataTrans...")
     def __init__(self, data_transformation_config:config_entity.DataTransformationConfig,
                     data_ingestion_artifact:artifact_entity.DataIngestionArtifact):
         try:
@@ -29,12 +29,13 @@ class DataTransformation:
     def get_data_transformer_obj(cls)->Pipeline:
         try:
             simple_imputer = SimpleImputer(strategy='constant', fill_value=0)
+            robust_scaler = RobustScaler()
 
-            constant_pipeline = Pipeline(steps=[
+            pipe = Pipeline(steps=[
                 ('Imputer', simple_imputer),
-                ('RobustScaler', RobustScaler())
+                ('RobustScaler',robust_scaler)
             ])
-            return Pipeline
+            return pipe
              
         except Exeption as e:
             raise SensorException(e, sys)
@@ -63,12 +64,12 @@ class DataTransformation:
             target_feature_test_arr = label_encoder.transform(target_feature_test_df)
 
             # Created pipleine object
-            transformation_pipleline = DataTransformation.get_data_transformer_obj()
-            transformation_pipleline.fit(target_feature_train_df)
+            transformation_pipeline = DataTransformation.get_data_transformer_obj()
+            transformation_pipeline.fit(input_feature_train_df)
 
             # Transforming input features
-            input_feature_train_arr = transformation_pipleine.transform(input_feature_train_df)
-            input_feature_test_arr = transformation_pipleine.transform(input_feature_test_df)
+            input_feature_train_arr = transformation_pipeline.transform(input_feature_train_df)
+            input_feature_test_arr = transformation_pipeline.transform(input_feature_test_df)
 
             # Removing bias in TARGET_COLUMN using SMOTETomek
             smt = SMOTETomek(random_state=42)
@@ -88,7 +89,7 @@ class DataTransformation:
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_train_path, array=train_arr)
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_test_path, array=test_arr)
 
-            utils.save_object(file_path=self.data_transformation_config.transform_object_path, obj=transformation_pipleine)
+            utils.save_object(file_path=self.data_transformation_config.transform_object_path, obj=transformation_pipeline)
 
             utils.save_object(file_path=self.data_transformation_config.target_encoder_path, obj=label_encoder)
 

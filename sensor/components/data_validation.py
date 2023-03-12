@@ -1,17 +1,17 @@
+import sys, os
 from scipy.stats import ks_2samp
 from sensor.entity import artifact_entity, config_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
 from sensor import utils
-import sys, os
 import pandas as pd
 import numpy as np
 from typing import Optional
 from sensor.config import TARGET_COLUMN
 
 
-class data_validation:
-
+class DataValidation:
+    print("in DataValidtion")
     def __init__(self, 
                     data_validation_config:config_entity.DataValidationConfig,
                     data_ingestion_artifact:artifact_entity.DataIngestionArtifact):
@@ -111,7 +111,6 @@ class data_validation:
 
     def initiate_data_validation(self)->artifact_entity.DataValidationArtifact:
         try:
-
             logging.info(f"{'-'*5}READING BASE DATASET{'-'*5}")
             base_df = pd.read_csv(self.data_validation_config.base_file_path)
             logging.info("Replacing 'na' with np.NaN")

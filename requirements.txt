@@ -6,7 +6,8 @@ python-dateutil==2.8.2
 python-dotenv==1.0.0
 pytz==2022.7.1
 six==1.16.0
-sklearn==0.0.post1
-PyYAML
 scikit-learn
+PyYAML
+dill==0.3.6
+imblearn
 -e .

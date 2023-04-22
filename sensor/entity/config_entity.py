@@ -79,12 +79,13 @@ class ModelTrainingConfig:
 
 
 class ModelEvaluationConfig:
-    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+    def __init__(self, training_pipeline_config:TrainingPipelineConfig):
+        # Change_threshold describes how much better (in percent as float) one model has to be from other to accepted & implemented.
         self.change_threshold = 0.01
 
 
 class ModelPusherConfig:
-    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+    def __init__(self, training_pipeline_config:TrainingPipelineConfig):
         self.model_pusher_dir = os.path.join(training_pipeline_config.artifact_dir , "model_pusher")
         self.saved_model_dir = os.path.join("saved_models")
         self.pusher_model_dir = os.path.join(self.model_pusher_dir,"saved_models")

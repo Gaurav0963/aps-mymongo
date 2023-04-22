@@ -56,7 +56,7 @@ class ModelResolver:
     def get_latest_transformer_path(self):
         try:
             latest_dir = self.get_latest_dir_path()
-            if lastest_dir is None:
+            if latest_dir is None:
                 raise Exception(f"{TRANSFORMER_OBJECT_FILE_NAME} NOT found!!!")
             return os.path.join(latest_dir, self.transformer_dir_name, TRANSFORMER_OBJECT_FILE_NAME)
         except Exception as e:

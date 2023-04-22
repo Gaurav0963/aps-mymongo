@@ -34,7 +34,7 @@ class ModelEvaluation:
             # If saved_models folder has model.pkl file then we will compare 
             # between model.pkl file from save_models and recently trained model
         
-            logging.info("If saved_models folder has model.pkl file then we will compare"
+            logging.info("If saved_models folder has model.pkl file then we will compare "
             "between model.pkl file from save_models and recently trained model")
         
             latest_dir_path = self.model_resolver.get_latest_dir_path()

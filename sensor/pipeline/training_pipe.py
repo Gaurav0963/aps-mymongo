@@ -1,14 +1,15 @@
 import os, sys
 from sensor.logger import logging
+from sensor.entity import config_entity
 from sensor.exception import SensorException
 from sensor.utils import get_collection_as_dataframe
-from sensor.entity import config_entity
+from sensor.components.model_pusher import ModelPusher
+from sensor.components.model_trainer import ModelTrainer
 from sensor.components.data_ingestion import DataIngestion
 from sensor.components.data_validation import DataValidation
-from sensor.components.data_transformation import DataTransformation
-from sensor.components.model_trainer import ModelTrainer
 from sensor.components.model_evaluation import ModelEvaluation
-from sensor.components.model_pusher import ModelPusher
+from sensor.components.data_transformation import DataTransformation
+
 
 def start_training_pipeline():
      try:
@@ -16,7 +17,6 @@ def start_training_pipeline():
 
           # Data Ingestion
           data_ingestion_config = config_entity.DataIngestionConfig(training_pipeline_config)
-          # print(data_ingestion_config.to_dict())    
           data__ingestion = DataIngestion(data_ingestion_config = data_ingestion_config)
           data_ingestion_artifact = data__ingestion.initiate_data_ingestion()
           

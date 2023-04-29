@@ -12,4 +12,13 @@ dill==0.3.6
 imblearn
 xgboost==1.7.4
 apache-airflow
+fastapi==0.78.0
+httptools==0.5.0
+mypy-boto3-s3==1.24.76
+types-s3transfer==0.6.0.post4
+uvicorn==0.18.3
+watchfiles==0.17.0
+websockets==10.3
+wincertstore==0.2
+chill
 -e .

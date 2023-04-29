@@ -11,4 +11,5 @@ PyYAML
 dill==0.3.6
 imblearn
 xgboost==1.7.4
+apache-airflow
 -e .
